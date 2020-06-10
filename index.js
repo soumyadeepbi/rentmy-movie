@@ -1,4 +1,5 @@
 const express = require('express')
+const customers = require('./routes/customers')
 const app = express()
 
 mongoose.connect('mongodb://localhost/rentmymovie')
@@ -7,6 +8,7 @@ mongoose.connect('mongodb://localhost/rentmymovie')
 
 
 app.use(express.json())
+app.use('/api/customers', customers)
 
 const port = process.env.PORT || 3000
 app.listen(port, () => console.log(`Listening to port ${port}`))
