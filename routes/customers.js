@@ -38,7 +38,11 @@ router.put('/:id', async(req,res) => {
     res.send(customer)
 })
 
+router.delete('/:id', async(req,res) => {
+    const customer = await Customer.findByIdAndDelete(req.params.id)
+    if(!customer) return res.status(404).send('Customer with given id not found')
 
-
+    res.send(customer)
+})
 
 module.exports = router
