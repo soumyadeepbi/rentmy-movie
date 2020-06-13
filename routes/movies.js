@@ -64,7 +64,7 @@ router.put('/:id', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
     try {
-        const movie = Movie.findByIdAndRemove(req.params.id)
+        const movie = await Movie.findByIdAndRemove(req.params.id)
         return res.send(movie)
     }
     catch (err) {
@@ -74,7 +74,7 @@ router.delete('/:id', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     try {
-        const movie = Movie.findById(req.params.id)
+        const movie = await Movie.findById(req.params.id)
         res.send(movie)
     }
     catch (err) {
