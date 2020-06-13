@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
     if (error) return res.status(400).send(error.details[0].message)
 
     try {
-        const genre = await Genre.findById(req.body.genre)
+        const genre = await Genre.findById(req.body.genreId)
 
         let movie = new Movie({
             title: req.body.title,
@@ -64,7 +64,7 @@ router.put('/:id', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
     try {
-        const movie = await Movie.findByIdAndRemove(req.params.id)
+        const movie = await Movie.findByIdAndDelete(req.params.id)
         return res.send(movie)
     }
     catch (err) {
